@@ -15,17 +15,61 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class ActionEngine extends DriverEngine {
- public  static 	WebDriverWait wait;
+	public static WebDriverWait wait;
 
+	// navigate method
 	public static void navigateToUrl(String enterUrl) {
 
-		driver.get(enterUrl);
+		driver.navigate().to(enterUrl);
 
 	}
+
+	public static void navigateBack() {
+
+		driver.navigate().back();
+	}
+
+	public static void navigateForward() {
+
+		driver.navigate().forward();
+
+	}
+
+	public static void refreshBrowser() {
+
+		driver.navigate().back();
+	}
+	// get Command
 
 	public static String getCurrentUrl() {
 
 		return driver.getCurrentUrl();
+	}
+
+	public static String getTitle() {
+
+		return driver.getTitle();
+
+	}
+
+	public static String getPageSource() {
+
+		return driver.getPageSource();
+	}
+
+	public static String getText(WebElement name) {
+
+		return name.getText();
+	}
+
+	public static String getTagName(WebElement name) {
+
+		return name.getTagName();
+	}
+
+	public static String getAttributeValue(WebElement name, String enterAttributeName) {
+
+		return name.getAttribute(enterAttributeName);
 	}
 
 	public static void click(WebElement name) {
@@ -36,28 +80,27 @@ public class ActionEngine extends DriverEngine {
 
 	}
 
-	public static String getTitle() {
+	public static void clear(WebElement name) {
 
-		return driver.getTitle();
+		name.clear();
+	}
 
-	}
-	
-	public static void clear(WebElement name )
-	{
-		
-       name.clear();
-	}
-	
-	
-	
-	public static void sendKeys(WebElement name , String data ){
-		
-		
+	public static void sendKeys(WebElement name, String data) {
+
 		name.sendKeys(data);
 	}
-	
-	
-	public static  void waitForElementVisibility(WebElement locator) {
+
+	public static void closeSingleWindow() {
+
+		driver.close();
+	}
+
+	public static void closeAllWindow() {
+		driver.quit();
+	}
+
+	// wait command
+	public static void waitForElementVisibility(WebElement locator) {
 
 		wait = new WebDriverWait(driver, 35);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
@@ -66,7 +109,7 @@ public class ActionEngine extends DriverEngine {
 
 	}
 
-	public static  void waitForElementClickable(WebElement locator) {
+	public static void waitForElementClickable(WebElement locator) {
 
 		wait = new WebDriverWait(driver, 35);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
@@ -74,5 +117,61 @@ public class ActionEngine extends DriverEngine {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 
 	}
+	public static boolean checkAlertBoxExistance() {
 
+		wait = new WebDriverWait(driver, 35);
+		wait.pollingEvery(5, TimeUnit.SECONDS);
+		wait.ignoring(NoSuchElementException.class);
+	 if(wait.until(ExpectedConditions.alertIsPresent())!=null){
+		 
+		  return true ;
+	 }else{
+		 
+		 return false ;
+	 }
+
+	}
+	public static void WaitFor3sec() {
+
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	// alert handling
+	public static void alertAccept() {
+
+		driver.switchTo().alert().accept();
+	}
+
+	public static String getAlertText() {
+		return driver.switchTo().alert().getText();
+	}
+
+	public static void alertDismiss() {
+
+		driver.switchTo().alert().dismiss();
+	}
+
+	public static void sendDataInPromptBox(String putPromptData) {
+
+		driver.switchTo().alert().sendKeys(putPromptData);
+
+	}
+  // conditional
+	
+	public static boolean CheckElementEnable(WebElement name){
+		
+	  return 	name.isEnabled();
+	}
+	public static boolean checkElementDisplay(WebElement name){
+		return name.isDisplayed();
+	}
+	public static boolean checkElementSelection(WebElement name){
+		
+		return name.isSelected();
+	}
 }
