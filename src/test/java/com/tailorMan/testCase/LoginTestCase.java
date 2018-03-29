@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tailorManStore.businessScript;
+package com.tailorMan.testCase;
 
 import org.testng.Assert;
 

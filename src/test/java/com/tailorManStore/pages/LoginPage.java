@@ -6,6 +6,7 @@ package com.tailorManStore.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
 
 import com.action.engine.ActionEngine;
 
@@ -35,9 +36,11 @@ public class LoginPage extends ActionEngine {
 	@FindBy (how =How.XPATH,using="//h1[text()='Welcome']")
 	 WebElement welcomeText;
 	 
+	@FindBy(how =How.XPATH,using ="//h1[text()='Tailorman']")
+	WebElement tailorManHeading ;
 	 
 	
-	public void loginTailorManStore(String userNameValue , String passwordValue ){
+	public String loginTailorManStore(String userNameValue , String passwordValue ){
 		
 		ActionEngine.click(loginButton);
 		ActionEngine.waitForElementVisibility(signInText);
@@ -46,7 +49,11 @@ public class LoginPage extends ActionEngine {
 		ActionEngine.waitForElementVisibility(welcomeText);
 		ActionEngine.sendKeys(password, passwordValue);
 		ActionEngine.click(nextButton);
+		ActionEngine.waitForElementVisibility(tailorManHeading);
 		
+	return ActionEngine.getText(tailorManHeading);
+	
+		 
 		
 	}
 	
