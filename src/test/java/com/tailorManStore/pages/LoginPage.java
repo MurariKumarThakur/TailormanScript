@@ -15,46 +15,47 @@ import com.action.engine.ActionEngine;
  *
  */
 public class LoginPage extends ActionEngine {
-	
-	
-	@FindBy(how =How.LINK_TEXT , using="login") 
-	   WebElement loginButton ;
-	
-	  
-	@FindBy(how=How.XPATH,using ="//h1[text()='Sign in']")
-        WebElement signInText ;
-	
-	@FindBy(how = How.ID,using="identifierId")
-	    WebElement userName ;
-	
-	@FindBy(how = How.XPATH,using="//span[text()='Next']")
+
+	@FindBy(how = How.LINK_TEXT, using = "Login")
+	WebElement loginButton;
+
+	@FindBy(how = How.XPATH, using = "//h1[text()='Sign in']")
+	WebElement signInText;
+
+	@FindBy(how = How.ID, using = "identifierId")
+	WebElement userName;
+
+	@FindBy(how = How.XPATH, using = "//span[text()='Next']")
 	WebElement nextButton;
-	
-	@FindBy(how = How.NAME,using ="password")
+
+	@FindBy(how = How.NAME, using = "password")
 	WebElement password;
-	
-	@FindBy (how =How.XPATH,using="//h1[text()='Welcome']")
-	 WebElement welcomeText;
-	 
-	@FindBy(how =How.XPATH,using ="//h1[text()='Tailorman']")
-	WebElement tailorManHeading ;
-	 
-	
-	public String loginTailorManStore(String userNameValue , String passwordValue ){
-		
+
+	@FindBy(how = How.XPATH, using = "//h1[text()='Welcome']")
+	WebElement welcomeText;
+
+	@FindBy(how = How.XPATH, using = "//h1[text()='Tailorman']")
+	WebElement tailorManHeading;
+
+	public String loginTailorManStore(String userNameValue, String passwordValue) {
+
 		ActionEngine.click(loginButton);
+
+		ActionEngine.HandleWindow();
 		ActionEngine.waitForElementVisibility(signInText);
-		ActionEngine.sendKeys(userName,userNameValue);
+
+		userName.sendKeys(userNameValue);
 		ActionEngine.click(nextButton);
 		ActionEngine.waitForElementVisibility(welcomeText);
+
+		ActionEngine.HandleWindow();
 		ActionEngine.sendKeys(password, passwordValue);
+
 		ActionEngine.click(nextButton);
 		ActionEngine.waitForElementVisibility(tailorManHeading);
-		
-	return ActionEngine.getText(tailorManHeading);
-	
-		 
-		
+
+		return ActionEngine.getText(tailorManHeading);
+
 	}
-	
+
 }

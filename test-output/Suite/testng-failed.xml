@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <parameter name="browserName" value="chrome"/>
-  <test name="chrome(failed)">
+  <test thread-count="5" name="chrome(failed)">
     <classes>
-      <class name="com.tailorManStore.businessScript.LoginTestCase">
+      <class name="com.tailorMan.testCase.StoreHomePageTestCase">
         <methods>
           <include name="openBrowser"/>
           <include name="endSuite"/>
-          <include name="varifyTailorManStoreTitle"/>
           <include name="startMethod"/>
+          <include name="VerifyTextOnStoreHomePage"/>
         </methods>
-      </class> <!-- com.tailorManStore.businessScript.LoginTestCase -->
+      </class> <!-- com.tailorMan.testCase.StoreHomePageTestCase -->
     </classes>
   </test> <!-- chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

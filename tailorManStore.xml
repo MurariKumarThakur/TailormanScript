@@ -5,7 +5,8 @@
   
     <test  name="chrome"> 
     <classes>
-      <class name="com.tailorManStore.businessScript.LoginTestCase"/>
-    </classes>
+      <class name="com.tailorMan.testCase.LoginTestCase"/>
+      <class name="com.tailorMan.testCase.StoreHomePageTestCase"/>
+      </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

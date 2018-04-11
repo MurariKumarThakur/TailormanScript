@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.base.engine.DriverEngine;
 
@@ -88,7 +89,7 @@ public class ActionEngine extends DriverEngine {
 	}
 
 	public static void sendKeys(WebElement name, String data) {
-
+        name.clear();
 		name.sendKeys(data);
 	}
 
@@ -176,5 +177,40 @@ public class ActionEngine extends DriverEngine {
 		
 		return name.isSelected();
 	}
+	
+	public static void HandleWindow(){
+		
+	String window =	driver.getWindowHandle();
+	
+	 driver.switchTo().window(window);
+	  	
+	}
+	
+	
+	
+	public static void  verifyElementExistance(WebElement name ,String ExpectedText)
+	
+	{
+		
+	String ActualText  =	name.getText();
+	
+	 if(ActualText.equals(ExpectedText))
+	 {
+		 
+		 Assert.assertEquals(ActualText, ExpectedText);
+		 
+		 
+	 }
+		
+	 else
+		 
+	 {
+		 
+		 System.out.println("Not Matching !!!");
+		 
+	 }
+		
+	}
+	
 	
 }
