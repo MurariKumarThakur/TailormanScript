@@ -3,9 +3,16 @@
 <suite name="Suite">
     <parameter name="browserName" value="chrome"/> 
   
-    <test  name="chrome"> 
+    <test  name="loginPage"> 
     <classes>
       <class name="com.tailorMan.testCase.LoginTestCase"/>
+      
+      </classes>
+  </test> <!-- Test -->
+  
+    <test  name="storeHomepage"> 
+    <classes>
+    
       <class name="com.tailorMan.testCase.StoreHomePageTestCase"/>
       </classes>
   </test> <!-- Test -->

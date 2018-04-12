@@ -17,14 +17,20 @@ import com.helper.utility.GetExtentReport;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
+import freemarker.log.Logger;
+
 public class ActionEngine extends DriverEngine {
+	
+	
+	
+	
 	public static WebDriverWait wait;
 
 	// navigate method
 	public static void navigateToUrl(String enterUrl) {
 
 		driver.navigate().to(enterUrl);
-
+         
 	}
 
 	public static void navigateBack() {
@@ -194,6 +200,8 @@ public class ActionEngine extends DriverEngine {
 		
 	String ActualText  =	name.getText();
 	
+	
+	
 	 if(ActualText.equals(ExpectedText))
 	 {
 		 
@@ -206,11 +214,13 @@ public class ActionEngine extends DriverEngine {
 		 
 	 {
 		 
-		 System.out.println("Not Matching !!!");
+		 System.out.println("ACTUAL RESULT IS NOT MATCHING WITH EXPECTED !!!");
 		 
 	 }
 		
 	}
+	
+	
 	
 	
 }

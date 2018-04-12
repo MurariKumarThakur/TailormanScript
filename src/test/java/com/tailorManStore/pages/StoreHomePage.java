@@ -3,6 +3,7 @@
  */
 package com.tailorManStore.pages;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -21,52 +22,46 @@ import com.action.engine.ActionEngine;
  */
 public class StoreHomePage extends ActionEngine {
 
-	@FindBy(how = How.CLASS_NAME, using = "logo active")
-	WebElement TailorManLogo;
-	
-	@FindAll(@FindBy(how = How.CLASS_NAME, using = "logo active"))
-	 List<WebElement> TailorManLogoList;
+	@FindBy(how = How.XPATH, using = "//a[@class='option']")
+	List<WebElement> TailorManLogoList;
 
 	@FindBy(how = How.XPATH, using = "//a[text()='Store Ops']")
 	WebElement StoreOpsLink;
 
 	@FindBy(how = How.XPATH, using = "//a[text()='Work Orders']")
-	WebElement WorkOrders;
+	WebElement WorkOrdersLink;
 
 	@FindBy(how = How.XPATH, using = "//a[text()='Dashboard']")
-	WebElement DashBoard;
+	WebElement DashBoardLink;
 
-	
-
-	
 	@FindBy(how = How.XPATH, using = "//a[text()='Inventory']")
-	WebElement Inventory;
+	WebElement InventoryLink;
 
 	@FindBy(how = How.XPATH, using = "//div[@class='hamburger']")
 	WebElement LogOutForm;
 
 	@FindBy(how = How.XPATH, using = "//a[text()='Logout']")
 	WebElement LogoutButton;
-	
-	@FindAll(@FindBy(how = How.XPATH, using = "//a[text()='Logout']"))
-	 List<WebElement> logOutButtonNum;
+
+	@FindBy(how = How.XPATH, using = "//a[text()='Logout']")
+	List<WebElement> LogoutButtonList;
 
 	@FindBy(how = How.XPATH, using = "//a[text()='Reset']")
 	WebElement ResetButton;
 
-	@FindAll(@FindBy(how = How.XPATH, using = "//a[text()='Reset']"))
-	 List<WebElement> ResetButtonNum;
-	
+	@FindBy(how = How.XPATH, using = "//a[text()='Reset']")
+	List<WebElement> ResetButtonList;
+
 	@FindBy(how = How.XPATH, using = "//h1[text()='Select Store']")
 	WebElement StoreNamePage;
 
-	@FindBy(how = How.XPATH, using = "//h1[text()='Select Store']")
+	@FindBy(how = How.XPATH, using = "//h1[text()='Order Workflow']")
 	WebElement WorkOrdersPage;
 
-	@FindBy(how = How.XPATH, using = "//h1[text()='Select Store']")
+	@FindBy(how = How.XPATH, using = "//h1[text()='Dashboard']")
 	WebElement DashBoardPage;
 
-	@FindBy(how = How.XPATH, using = "//h1[text()='Select Store']")
+	@FindBy(how = How.XPATH, using = "//h1[text()='Inventory']")
 	WebElement InventoryPage;
 
 	@FindBy(how = How.XPATH, using = "//a[@class='back']")
@@ -74,143 +69,119 @@ public class StoreHomePage extends ActionEngine {
 
 	public void verifyTailorManLogo() {
 
-	 int logonum =	TailorManLogoList.size();
-	 
-	 System.out.println(logonum);
-	 
-	  if(logonum > 0)
-	  {
-		  Assert.assertTrue(logonum > 0);
-		  
-	  }else 
-		  
-	  {
-		  
-		  System.out.println("LOGO IS NOT DISPLAYING !!! ");
-	  }
-		  
+		int logoExistance = TailorManLogoList.size();
 
+		if (logoExistance > 0) {
+
+			Assert.assertTrue(logoExistance > 0);
+		}
+
+		else {
+			System.out.println("LOGO IS NOT EXIST");
+		}
 	}
 
-	public void verifyStoreOpsLinkExistance(String ExpectedResult) {
+	public void verifyStoreOpsLinkExistance(String expectedResult) {
 
-		ActionEngine.verifyElementExistance(StoreOpsLink, ExpectedResult);
+		ActionEngine.verifyElementExistance(StoreOpsLink, expectedResult);
+
 	}
 
 	public void verifyWorkOrderLinkExistance(String ExpectedResult) {
-		ActionEngine.verifyElementExistance(WorkOrders, ExpectedResult);
+		ActionEngine.verifyElementExistance(WorkOrdersLink, ExpectedResult);
 
 	}
 
 	public void verifyDashBoardLinkExistance(String ExpectedResult) {
-		ActionEngine.verifyElementExistance(DashBoard, ExpectedResult);
+		ActionEngine.verifyElementExistance(DashBoardLink, ExpectedResult);
 
 	}
 
 	public void verifyInventoryLinkExistance(String ExpectedResult) {
-		ActionEngine.verifyElementExistance(InventoryPage, ExpectedResult);
+		ActionEngine.verifyElementExistance(InventoryLink, ExpectedResult);
 
 	}
 
-	public void verifyLogOutpage() {
-		
-		
+	public void verifyLogOutpage(Method m) {
+
 		LogOutForm.click();
 
 		ActionEngine.waitForElementVisibility(ResetButton);
 
-		int logoutbuttonExistance = logOutButtonNum.size();
-		int ResetbuttonExistance =  ResetButtonNum.size();
+		int logOutButtonExistance = LogoutButtonList.size();
+		int resetButtonListExistance = ResetButtonList.size();
 
-		if (logoutbuttonExistance > 0 && ResetbuttonExistance > 0) {
-
-			Assert.assertTrue(logoutbuttonExistance > 0 && logoutbuttonExistance > 0);
-			
-			LogOutForm.click();
-
-		} else {
-
-			System.out.println("LOGOUT IS  NOT DISPLAYING !!");
-			System.out.println("RESET BUTTON IS NOT DISPLAYING !!");
-			
+		if (logOutButtonExistance > 0 && resetButtonListExistance > 0) {
+			Assert.assertTrue(logOutButtonExistance > 0 && resetButtonListExistance > 0,
+					"BOTH LOGOUT BUTTON AND RESET BUTTON NOT EXIT");
 			LogOutForm.click();
 		}
-		
-		
 
-	
+		else
 
-		
-		
-		
-		
+		{
+			System.out.println(m.getName() + " Method section " + " LOGOUT BUTTON AND RESET BUTTON NOT PRESENT !!!");
+			LogOutForm.click();
+		}
+
 	}
-	public void verifyStoreLinkRedirection(String ExpectedResult)
 
-	{
+	/*
+	 * 
+	 * CHECK PAGE IS REDIRECTED CORRECTLY OR NOT
+	 * 
+	 * CUSTOME METHOD
+	 */
 
-		StoreOpsLink.click();
+	public void RedirectionPage(WebElement wantToClick, WebElement wantToWait, WebElement wantTowaitAgain) {
+		wantToClick.click();
 
-		ActionEngine.waitForElementVisibility(StoreNamePage);
+		boolean ElementIsVisiable = wantToWait.isDisplayed();
 
-		ActionEngine.verifyElementExistance(StoreNamePage, ExpectedResult);
+		if (ElementIsVisiable == true) {
+			Assert.assertEquals(ElementIsVisiable, true);
 
-		ActionEngine.waitForElementVisibility(StoreOpsLink);
+		}
+
+		else
+
+		{
+
+			System.out.println("HEADING IS NOT DISPLAYING");
+		}
 		BackButton.click();
-
-		ActionEngine.waitForElementVisibility(StoreOpsLink);
-
-	}
-
-	public void verifyWorkOrderLinkRedirection(String ExpectedResult)
-
-	{
-
-		WorkOrders.click();
-
-		ActionEngine.waitForElementVisibility(WorkOrdersPage);
-
-		ActionEngine.verifyElementExistance(WorkOrdersPage, ExpectedResult);
-
-		BackButton.click();
-
-		ActionEngine.waitForElementVisibility(WorkOrders);
-
-	}
-	
-	public void verifyDashBoardLinkRedirection(String ExpectedResult)
-
-	{
-
-		DashBoard.click();
-
-		ActionEngine.waitForElementVisibility(DashBoardPage);
-
-		ActionEngine.verifyElementExistance(DashBoardPage, ExpectedResult);
-
-		BackButton.click();
-
-		ActionEngine.waitForElementVisibility(DashBoard);
+		ActionEngine.waitForElementVisibility(wantTowaitAgain);
 
 	}
 
-	public void verifyInventoryLinkRedirection(String ExpectedResult)
+	public void verifyStoreLinkRedirection()
 
 	{
 
-		Inventory.click();
+		RedirectionPage(StoreOpsLink, StoreNamePage, StoreOpsLink);
 
-		ActionEngine.waitForElementVisibility(InventoryPage);
+	}
 
-		ActionEngine.verifyElementExistance(InventoryPage, ExpectedResult);
+	public void verifyWorkOrderLinkRedirection()
 
-		Inventory.click();
+	{
+		RedirectionPage(WorkOrdersLink, WorkOrdersPage, WorkOrdersLink);
 
-		ActionEngine.waitForElementVisibility(DashBoard);
-		
-		
-		
-		
+	}
+
+	public void verifyDashBoardLinkRedirection()
+
+	{
+
+		RedirectionPage(DashBoardLink, DashBoardPage, DashBoardLink);
+
+	}
+
+	public void verifyInventoryLinkRedirection()
+
+	{
+
+		RedirectionPage(InventoryLink, InventoryPage, InventoryLink);
 
 	}
 }

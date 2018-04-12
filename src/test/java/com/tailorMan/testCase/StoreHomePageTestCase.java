@@ -3,6 +3,8 @@
  */
 package com.tailorMan.testCase;
 
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -17,25 +19,14 @@ import com.tailorManStore.pages.StoreHomePage;
 public class StoreHomePageTestCase extends ActionEngine {
 	
 	
-	StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);
+	
 	
 	// page text 
 	
-	String StoreopsText = "Store Ops";
-	String workOrderText = "Work Orders";
-	String dashBoardText = "Dashboard";
-	String InventoryText = "Inventory";
-	
-	
-	String StoreNamePageRedirection = "Select Store";
-	
-	String workOrderPageRedirection = "Order Workflow";
-	
-	String DashBoardPageRedirection = "Dashboard";
-	
-	String InventoryPageRedirection = "Inventory";
-	
-	 
+	String StoreopsText = "STORE OPS";
+	String workOrderText = "WORK ORDERS";
+	String dashBoardText = "DASHBOARD";
+	String InventoryText = "INVENTORY";
 	
 	
 	
@@ -43,15 +34,18 @@ public class StoreHomePageTestCase extends ActionEngine {
 	
 	
 	
-	@Test(priority =4 )
+	
+	
+	
+	@Test(priority =1 )
 	public void VerifyTextOnStoreHomePage()
 	{
 	
- StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);	  
+		StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);
 		
 	  storePage.verifyTailorManLogo();
 	  
-	  storePage.verifyStoreOpsLinkExistance("StoreopsText");
+	  storePage.verifyStoreOpsLinkExistance(StoreopsText);
 	  
 	  storePage.verifyWorkOrderLinkExistance(workOrderText);
 	  
@@ -63,31 +57,31 @@ public class StoreHomePageTestCase extends ActionEngine {
 		
 		
 	}
-	/*
-	@Test(priority=5)
-	public void verifyLogoutPage()
+	
+	@Test(priority=2)
+	public void verifyLogoutPage(Method m)
 	{
- StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);	
-		
-	storePage.verifyLogOutpage();	
+ 
+		StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);	
+	storePage.verifyLogOutpage(m);
 		
 	}
 	
-	@Test(priority=6)
+	@Test(priority=3)
     public void verifyLinkRedirection()
     {
-StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);	 
+		StoreHomePage storePage =	PageFactory.initElements(driver, StoreHomePage.class);	 
      
-    storePage.verifyStoreLinkRedirection(StoreNamePageRedirection);	
+    storePage.verifyStoreLinkRedirection();	
     
-    storePage.verifyWorkOrderLinkRedirection(workOrderPageRedirection);
+    storePage.verifyWorkOrderLinkRedirection();
     
-    storePage.verifyDashBoardLinkRedirection(DashBoardPageRedirection);
+    storePage.verifyDashBoardLinkRedirection();
     
-    storePage.verifyInventoryLinkExistance(InventoryPageRedirection);
+    storePage.verifyInventoryLinkRedirection();
     	
     	
     	
     }
-    */
+    
 }

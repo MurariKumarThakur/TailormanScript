@@ -2,16 +2,32 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <parameter name="browserName" value="chrome"/>
-  <test thread-count="5" name="chrome(failed)">
+  <test thread-count="5" name="loginPage(failed)">
+    <classes>
+      <class name="com.tailorMan.testCase.LoginTestCase">
+        <methods>
+          <include name="varifyTailorManStoreTitle"/>
+          <include name="openBrowser"/>
+          <include name="verifyLogin"/>
+          <include name="endSuite"/>
+          <include name="openTailorManStore"/>
+          <include name="startMethod"/>
+        </methods>
+      </class> <!-- com.tailorMan.testCase.LoginTestCase -->
+    </classes>
+  </test> <!-- loginPage(failed) -->
+  <test thread-count="5" name="storeHomepage(failed)">
     <classes>
       <class name="com.tailorMan.testCase.StoreHomePageTestCase">
         <methods>
           <include name="openBrowser"/>
           <include name="endSuite"/>
+          <include name="verifyLinkRedirection"/>
           <include name="startMethod"/>
+          <include name="verifyLogoutPage" invocation-numbers="0"/>
           <include name="VerifyTextOnStoreHomePage"/>
         </methods>
       </class> <!-- com.tailorMan.testCase.StoreHomePageTestCase -->
     </classes>
-  </test> <!-- chrome(failed) -->
+  </test> <!-- storeHomepage(failed) -->
 </suite> <!-- Failed suite [Suite] -->
