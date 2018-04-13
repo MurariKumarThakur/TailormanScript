@@ -113,7 +113,7 @@ public class StoreHomePage extends ActionEngine {
 
 		if (logOutButtonExistance > 0 && resetButtonListExistance > 0) {
 			Assert.assertTrue(logOutButtonExistance > 0 && resetButtonListExistance > 0,
-					"BOTH LOGOUT BUTTON AND RESET BUTTON NOT EXIT");
+					"BOTH LOGOUT BUTTON AND RESET BUTTON  EXIT");
 			LogOutForm.click();
 		}
 

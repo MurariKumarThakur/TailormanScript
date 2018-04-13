@@ -13,7 +13,7 @@
     <test  name="storeHomepage"> 
     <classes>
     
-      <class name="com.tailorMan.testCase.StoreHomePageTestCase"/>
+      <class name="com.tailorMan.testCase.StoreNameTestCase"/>
       </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

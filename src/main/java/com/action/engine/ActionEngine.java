@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -20,17 +21,14 @@ import com.relevantcodes.extentreports.LogStatus;
 import freemarker.log.Logger;
 
 public class ActionEngine extends DriverEngine {
-	
-	
-	
-	
+
 	public static WebDriverWait wait;
 
 	// navigate method
 	public static void navigateToUrl(String enterUrl) {
 
 		driver.navigate().to(enterUrl);
-         
+
 	}
 
 	public static void navigateBack() {
@@ -95,7 +93,7 @@ public class ActionEngine extends DriverEngine {
 	}
 
 	public static void sendKeys(WebElement name, String data) {
-        name.clear();
+		name.clear();
 		name.sendKeys(data);
 	}
 
@@ -126,20 +124,22 @@ public class ActionEngine extends DriverEngine {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 
 	}
+
 	public static boolean checkAlertBoxExistance() {
 
 		wait = new WebDriverWait(driver, 35);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class);
-	 if(wait.until(ExpectedConditions.alertIsPresent())!=null){
-		 
-		  return true ;
-	 }else{
-		 
-		 return false ;
-	 }
+		if (wait.until(ExpectedConditions.alertIsPresent()) != null) {
+
+			return true;
+		} else {
+
+			return false;
+		}
 
 	}
+
 	public static void WaitFor3sec() {
 
 		try {
@@ -170,57 +170,71 @@ public class ActionEngine extends DriverEngine {
 		driver.switchTo().alert().sendKeys(putPromptData);
 
 	}
-  // conditional
-	
-	public static boolean CheckElementEnable(WebElement name){
-		
-	  return 	name.isEnabled();
+	// conditional
+
+	public static boolean CheckElementEnable(WebElement name) {
+
+		return name.isEnabled();
 	}
-	public static boolean checkElementDisplay(WebElement name){
+
+	public static boolean checkElementDisplay(WebElement name) {
 		return name.isDisplayed();
 	}
-	public static boolean checkElementSelection(WebElement name){
-		
+
+	public static boolean checkElementSelection(WebElement name) {
+
 		return name.isSelected();
 	}
-	
-	public static void HandleWindow(){
-		
-	String window =	driver.getWindowHandle();
-	
-	 driver.switchTo().window(window);
-	  	
+
+	public static void HandleWindow() {
+
+		String window = driver.getWindowHandle();
+
+		driver.switchTo().window(window);
+
 	}
-	
-	
-	
-	public static void  verifyElementExistance(WebElement name ,String ExpectedText)
-	
+
+	public static void verifyElementExistance(WebElement name, String ExpectedText)
+
 	{
-		
-	String ActualText  =	name.getText();
-	
-	
-	
-	 if(ActualText.equals(ExpectedText))
-	 {
-		 
-		 Assert.assertEquals(ActualText, ExpectedText);
-		 
-		 
-	 }
-		
-	 else
-		 
-	 {
-		 
-		 System.out.println("ACTUAL RESULT IS NOT MATCHING WITH EXPECTED !!!");
-		 
-	 }
-		
+
+		String ActualText = name.getText();
+
+		if (ActualText.equals(ExpectedText)) {
+
+			Assert.assertEquals(ActualText, ExpectedText);
+
+		}
+
+		else
+
+		{
+
+			System.out.println("ACTUAL RESULT IS NOT MATCHING WITH EXPECTED !!!");
+
+		}
+
 	}
-	
-	
-	
-	
+
+	// scroll in to view
+
+	public static void scrollIntoView(WebElement name) {
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+
+		driver.executeScript("arguments[0].scrollIntoView(true);", name);
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+	}
+
 }
