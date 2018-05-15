@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <parameter name="browserName" value="chrome"/>
-  <test thread-count="5" name="loginPage(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tailorMan.testCase.LoginTestCase">
+      <class name="com.store.script.SelectStore">
         <methods>
           <include name="openBrowser"/>
-          <include name="verifyLogin"/>
           <include name="endSuite"/>
+          <include name="checkStoreNameExistance"/>
           <include name="startMethod"/>
         </methods>
-      </class> <!-- com.tailorMan.testCase.LoginTestCase -->
+      </class> <!-- com.store.script.SelectStore -->
     </classes>
-  </test> <!-- loginPage(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

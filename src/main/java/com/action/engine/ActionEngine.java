@@ -109,7 +109,7 @@ public class ActionEngine extends DriverEngine {
 	// wait command
 	public static void waitForElementVisibility(WebElement locator) {
 
-		wait = new WebDriverWait(driver, 35);
+		wait = new WebDriverWait(driver, 50);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class);
 		wait.until(ExpectedConditions.visibilityOf(locator));
@@ -118,7 +118,7 @@ public class ActionEngine extends DriverEngine {
 
 	public static void waitForElementClickable(WebElement locator) {
 
-		wait = new WebDriverWait(driver, 35);
+		wait = new WebDriverWait(driver, 50);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class);
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -127,7 +127,7 @@ public class ActionEngine extends DriverEngine {
 
 	public static boolean checkAlertBoxExistance() {
 
-		wait = new WebDriverWait(driver, 35);
+		wait = new WebDriverWait(driver, 50);
 		wait.pollingEvery(5, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class);
 		if (wait.until(ExpectedConditions.alertIsPresent()) != null) {

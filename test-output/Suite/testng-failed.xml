@@ -14,4 +14,16 @@
       </class> <!-- com.tailorMan.testCase.LoginTestCase -->
     </classes>
   </test> <!-- loginPage(failed) -->
+  <test thread-count="5" name="storeHomepage(failed)">
+    <classes>
+      <class name="com.tailorMan.testCase.StoreNameTestCase">
+        <methods>
+          <include name="openBrowser"/>
+          <include name="endSuite"/>
+          <include name="verifyStoreNamePresentOrNot"/>
+          <include name="startMethod"/>
+        </methods>
+      </class> <!-- com.tailorMan.testCase.StoreNameTestCase -->
+    </classes>
+  </test> <!-- storeHomepage(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tailorMan.testCase;
+package com.store.script;
 
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import com.action.engine.ActionEngine;
 import com.path.manager.pathManager;
-import com.tailorManStore.pages.LoginPage;
+import com.store.page.LoginPage;
 
 /**
  * @author Murari
@@ -53,10 +53,6 @@ public class LoginTestCase extends ActionEngine {
     
         Assert.assertEquals(ActualText, TailorManHomePageHeading);
         
-         
-        
-       
-       
-    }
+   }
 
 }

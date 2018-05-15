@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tailorManStore.pages;
+package com.store.page;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
